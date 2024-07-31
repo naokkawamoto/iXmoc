@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Issue Detail</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .thread-section {
+            margin-top: 20px;
+        }
+        .thread-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+        }
+        .thread-message .user-name {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .thread-message .message-content {
+            margin-left: 20px;
+        }
+        .photos-section {
+            margin-top: 20px;
+        }
+        .photos-section img {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project List</a></li>
+                        <li class="breadcrumb-item"><a href="issuelist.html">Issue List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Issue Detail</li>
+                    </ol>
+                </nav>
+                <h2>Project: Project Alpha</h2>
+
+                <!-- Issue Info Section -->
+                <div class="section-content">
+                    <h3 class="section-title">Issue Info</h3>
+                    <table class="table table-bordered small-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Detected By</th>
+                                <th>Assigned To</th>
+                                <th>Photos</th>
+                                <th>Issue Date</th>
+                                <th>Update Date</th>
+                                <th>Expected Completion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Crack on Wall</td>
+                                <td>Crack</td>
+                                <td>NEW</td>
+                                <td>Inspector A (Ad)</td>
+                                <td>Engineer B (PM)</td>
+                                <td>
+                                    <a href="projectreportdetail.html" class="btn btn-primary btn-sm">3D View</a>
+                                </td>
+                                <td>2023-07-01</td>
+                                <td>2023-07-10</td>
+                                <td>2023-07-15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Issue Photos Section -->
+                <div class="photos-section">
+                    <h3 class="section-title">Issue Photos</h3>
+                    <div>
+                        <img src="thumbnail1.jpg" alt="Photo 1">
+                        <img src="thumbnail2.jpg" alt="Photo 2">
+                        <img src="thumbnail3.jpg" alt="Photo 3">
+                    </div>
+                </div>
+
+                <!-- Issue Description Thread Section -->
+                <div class="thread-section">
+                    <h3 class="section-title">Issue Description</h3>
+                    <div class="thread-message">
+                        <span class="user-name">User1 (Ad):</span>
+                        <span class="message-content">Initial detection of the crack.</span>
+                    </div>
+                    <div class="thread-message">
+                        <span class="user-name">Engineer B (PM):</span>
+                        <span class="message-content">Investigation in progress.</span>
+                    </div>
+                    <!-- 他のメッセージも同様に追加 -->
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='issuelist.html'">BACK</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='issueupdate.html'">UPDATE</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

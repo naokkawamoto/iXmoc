@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Create Issue</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project List</a></li>
+                        <li class="breadcrumb-item"><a href="issuelist.html">Issue List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Issue</li>
+                    </ol>
+                </nav>
+                <h2>Create Issue</h2>
+                <!-- Issue Creation Form -->
+                <form>
+                    <div class="mb-3">
+                        <label for="issueName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="issueName" placeholder="Enter issue name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="issueCategory" class="form-label">Category</label>
+                        <select class="form-select" id="issueCategory">
+                            <option selected>Choose category...</option>
+                            <option value="1">Structural Defect</option>
+                            <option value="2">Others</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="detectedBy" class="form-label">Detected By</label>
+                        <select class="form-select" id="detectedBy">
+                            <option selected>Choose user...</option>
+                            <option value="1">User1 (Ad)</option>
+                            <option value="2">User2 (PM)</option>
+                            <option value="3">User3 (SM)</option>
+                            <option value="4">User4 (OP)</option>
+                            <option value="5">User5 (VD)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignedTo" class="form-label">Assigned To</label>
+                        <select class="form-select" id="assignedTo">
+                            <option selected>Choose user...</option>
+                            <option value="1">User1 (Ad)</option>
+                            <option value="2">User2 (PM)</option>
+                            <option value="3">User3 (SM)</option>
+                            <option value="4">User4 (OP)</option>
+                            <option value="5">User5 (VD)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="issueDescription" class="form-label">Issue Description</label>
+                        <textarea class="form-control" id="issueDescription" rows="4" placeholder="Enter issue description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="issuePhotos" class="form-label">Photos</label>
+                        <input type="file" class="form-control" id="issuePhotos" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expectedCompletion" class="form-label">Expected Completion</label>
+                        <input type="date" class="form-control" id="expectedCompletion">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='issuelist.html'">CANCEL</button>
+                        <button type="submit" class="btn btn-primary btn-lg">CREATE</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

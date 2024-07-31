@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Create Facility</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+        .btn-lg {
+            padding: 10px 20px;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="facilitymanage.html">Facility List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Facility</li>
+                    </ol>
+                </nav>
+                <h2>Create Facility</h2>
+                <!-- ここに施設作成フォームを追加 -->
+                <form id="facilityForm">
+                    <div class="mb-3">
+                        <label for="facilityName" class="form-label">Facility Name</label>
+                        <input type="text" class="form-control" id="facilityName" placeholder="Enter facility name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="facilityAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="facilityAddress" placeholder="Enter address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="facilityCategory" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="facilityCategory" placeholder="Enter category">
+                    </div>
+                    <div id="locations">
+                        <div class="mb-3">
+                            <label for="location1" class="form-label">Location 1</label>
+                            <input type="text" class="form-control" id="location1" placeholder="Enter location">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-3">
+                        <button type="button" class="btn btn-secondary" id="addLocationBtn">ADD LOCATION</button>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">CREATE</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+
+            var locationCounter = 1;
+            document.getElementById('addLocationBtn').addEventListener('click', function() {
+                locationCounter++;
+                var newLocationDiv = document.createElement('div');
+                newLocationDiv.className = 'mb-3';
+                newLocationDiv.innerHTML = '<label for="location' + locationCounter + '" class="form-label">Location ' + locationCounter + '</label>' +
+                                        '<input type="text" class="form-control" id="location' + locationCounter + '" placeholder="Enter location">';
+                document.getElementById('locations').appendChild(newLocationDiv);
+            });
+        });
+    </script>
+</body>
+</html>

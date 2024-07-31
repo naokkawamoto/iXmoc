@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Issue List</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .section-content {
+            margin-bottom: 20px;
+        }
+        .badge {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Issue List</li>
+                    </ol>
+                </nav>
+                <h2>Project: Project Alpha</h2>
+                <div class="section-content">
+                    <h3 class="section-title">Issue Info</h3>
+                    <table class="table table-bordered small-table">
+                        <thead>
+                            <tr>
+                                <th>Issue Count</th>
+                                <th>Unresolved Issues</th>
+                                <th>Resolved Issues</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="issuecreate.html" class="btn btn-success">NEW CREATE</a>
+                </div>
+                <h2>Issue List</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Name <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Category <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Status <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Detected By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Assigned To <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Thumbnail <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Issue Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Expected Completion <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Update Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- サンプルデータ。必要に応じて動的に生成してください。 -->
+                        <tr>
+                            <td>1</td>
+                            <td>Crack on Wall</td>
+                            <td>Crack</td>
+                            <td>NEW</td>
+                            <td>Inspector A (Ad)</td>
+                            <td>Engineer B (PM)</td>
+                            <td><img src="thumbnail1.jpg" alt="thumbnail" width="50"></td>
+                            <td>2023-07-01</td>
+                            <td>2023-07-15</td>
+                            <td>2023-07-10</td>
+                            <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Peeling Paint</td>
+                            <td>Peeling</td>
+                            <td>In Repair</td>
+                            <td>Inspector B (SM)</td>
+                            <td>Engineer C (OP)</td>
+                            <td><img src="thumbnail2.jpg" alt="thumbnail" width="50"></td>
+                            <td>2023-06-20</td>
+                            <td>2023-07-05</td>
+                            <td>2023-07-02</td>
+                            <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                        </tr>
+                        <!-- 他の行も同様に追加 -->
+                    </tbody>
+                </table>
+                <!-- ページネーションの例 -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.header, .footer {
+    background-color: #007bff; /* Bootstrapのプライマリカラー */
+    color: white;
+    padding: 10px 0;
+}
+.sidebar {
+    background-color: #0056b3; /* より濃い青色 */
+    color: white;
+    min-height: 100vh; /* サイドバーの高さを画面全体に */
+    transition: width 0.3s;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+}
+.content {
+    padding: 15px;
+}
+.sidebar-collapsed {
+    width: 0;
+    overflow: hidden;
+}
+.sidebar-expanded {
+    width: 250px;
+}
+body, html {
+    height: 100%;
+}
+.container-fluid {
+    min-height: calc(100vh - 100px); /* ヘッダーとフッターの高さを除外 */
+}

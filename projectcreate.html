@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Create Project</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .d-flex .btn-create {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Project</li>
+                    </ol>
+                </nav>
+                <h2>Create Project</h2>
+                <!-- ここにプロジェクト作成フォームを追加 -->
+                <form>
+                    <div class="mb-3">
+                        <label for="projectName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter project name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="projectStart" class="form-label">Project Start</label>
+                        <input type="date" class="form-control" id="projectStart">
+                    </div>
+                    <div class="mb-3">
+                        <label for="projectEnd" class="form-label">Project End</label>
+                        <input type="date" class="form-control" id="projectEnd">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">担当者</label>
+                        <div class="d-flex flex-wrap">
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user1" value="User1">
+                                <label class="form-check-label" for="user1">User1 (Ad)</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user2" value="User2">
+                                <label class="form-check-label" for="user2">User2 (PM)</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user3" value="User3">
+                                <label class="form-check-label" for="user3">User3 (SM)</label>
+                            </div>
+                            <!-- 他のユーザーも同様に追加 -->
+                            <button type="button" class="btn btn-primary btn-create">CREATE USER</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="facilitySelect" class="form-label">Facility</label>
+                        <div class="d-flex">
+                            <select class="form-select" id="facilitySelect">
+                                <option selected>Choose facility...</option>
+                                <option value="1">Facility A</option>
+                                <option value="2">Facility B</option>
+                                <!-- 他の施設も同様に追加 -->
+                            </select>
+                            <button type="button" class="btn btn-primary btn-create">CREATE FACILITY</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='projectmanage.html'">CANCEL</button>
+                        <button type="submit" class="btn btn-primary btn-lg">CREATE</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
