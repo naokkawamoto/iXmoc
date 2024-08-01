@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iXmoc - Project Report List</title>
+    <title>iXmoc - Account Manage</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -11,6 +11,7 @@
             background-color: #007bff;
             color: white;
             padding: 10px 0;
+            position: relative;
         }
         .sidebar {
             background-color: #0056b3;
@@ -58,10 +59,34 @@
         .small-table th {
             background-color: #f2f2f2;
         }
+        .section-content {
+            margin-bottom: 20px;
+        }
+        .badge {
+            font-size: 0.875rem;
+        }
+        .btn-dummy {
+            margin-right: 5px;
+        }
+        .action-buttons {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .action-buttons .btn {
+            margin-left: 5px;
+        }
+        .contact-button {
+            position: absolute;
+            right: 20px;
+            top: 100px;
+            font-size: 1.25rem; /* ボタンのサイズを大きく */
+            padding: 10px 20px; /* パディングを追加 */
+        }
     </style>
 </head>
 <body>
     <div include-html="header.html"></div>
+    <button class="btn btn-primary contact-button">Contact Us</button>
 
     <div class="container-fluid">
         <div class="row">
@@ -71,81 +96,91 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="projectmanage.html">Project Manage</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Project Report List</li>
+                        <li class="breadcrumb-item active" aria-current="page">Account Manage</li>
                     </ol>
                 </nav>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="section-title">Project: Project Alpha / Facility: Facility One</h2>
-                    <a href="projectreportcreate.html" class="btn btn-success">NEW CREATE</a>
-                </div>
-                
+                <h2>Account Manage</h2>
+
+                <!-- Account Info Section -->
                 <div class="section-content">
-                    <h3 class="section-title">Issue Info</h3>
+                    <h3 class="section-title">Account Info</h3>
                     <table class="table table-bordered small-table">
                         <thead>
                             <tr>
-                                <th>Issue Count</th>
-                                <th>Unresolved Issues</th>
-                                <th>Resolved Issues</th>
+                                <th>COMPANY NAME</th>
+                                <th>USER COUNT</th>
+                                <th>REPORT COUNT</th>
+                                <th>DATA CAPACITY (GB)</th>
+                                <th>CONTRACT</th>
+                                <th>CONTRACT START</th>
+                                <th>CONTRACT END</th>
+                                <th>CONTRACT AMOUNT</th>
+                                <th>PAYMENT METHOD</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>My Company</td>
                                 <td>10</td>
-                                <td>4</td>
-                                <td>6</td>
+                                <td>15</td>
+                                <td>5</td>
+                                <td>1 Year Auto-Renewal</td>
+                                <td>2024-07-01</td>
+                                <td>2025-06-30</td>
+                                <td>¥300,000/YEAR</td>
+                                <td>Credit Card</td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="action-buttons">
+                        <button class="btn btn-warning">Change Payment Method</button>
+                        <button class="btn btn-info">Change Contract</button>
+                        <a href="usermanage.html" class="btn btn-success">Add User</a>
+                    </div>
                 </div>
 
+                <!-- Payment Info Section -->
                 <div class="section-content">
-                    <h3 class="section-title">Issues</h3>
+                    <h3 class="section-title">Payment Info</h3>
                     <table class="table table-bordered small-table">
                         <thead>
                             <tr>
-                                <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
-                                <th>Thumbnail</th>
-                                <th>Issue Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
-                                <th>Issued By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
-                                <th>Update Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
-                                <th>Updated By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
-                                <th>Actions</th>
+                                <th>PAYMENT DATE</th>
+                                <th>PAYMENT METHOD</th>
+                                <th>STATUS</th>
+                                <th>CONTRACT NAME</th>
+                                <th>USER COUNT</th>
+                                <th>DATA CAPACITY (GB)</th>
+                                <th>ACTIONS</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td><img src="thumbnail1.jpg" alt="Thumbnail" style="width: 50px; height: 50px;"></td>
                                 <td>2023-07-01</td>
-                                <td>User1 (Ad)</td>
-                                <td>2023-07-10</td>
-                                <td>User2 (PM)</td>
-                                <td><a href="projectreportdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                <td>Credit Card</td>
+                                <td><span class="badge bg-success">Paid</span></td>
+                                <td>1 Year Auto-Renewal</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td class="text-center"><button class="btn btn-primary btn-sm">Download Invoice</button></td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td><img src="thumbnail2.jpg" alt="Thumbnail" style="width: 50px; height: 50px;"></td>
-                                <td>2023-07-02</td>
-                                <td>User3 (SM)</td>
-                                <td>2023-07-11</td>
-                                <td>User4 (OP)</td>
-                                <td><a href="projectreportdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                <td>2024-07-01</td>
+                                <td>Bank Transfer</td>
+                                <td><span class="badge bg-danger">Pending</span></td>
+                                <td>1 Year Auto-Renewal</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td class="text-center"><button class="btn btn-primary btn-sm">Download Invoice</button></td>
                             </tr>
+                            <!-- 追加の支払い情報行をここに追加 -->
                         </tbody>
                     </table>
                 </div>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">BACK</button>
+                </div>
             </main>
         </div>
     </div>

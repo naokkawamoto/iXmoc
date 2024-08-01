@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iXmoc</title>
+    <title>iXmoc - Dashboard</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .header, .footer {
-            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            background-color: #007bff;
             color: white;
             padding: 10px 0;
         }
         .sidebar {
-            background-color: #0056b3; /* より濃い青色 */
+            background-color: #0056b3;
             color: white;
-            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            min-height: calc(100vh - 120px);
             transition: width 0.3s;
-            position: fixed; /* サイドバーを固定 */
-            top: 70px; /* ヘッダーの高さ + 10px */
-            bottom: 60px; /* フッターの高さ */
+            position: fixed;
+            top: 70px;
+            bottom: 60px;
         }
         .sidebar-expanded {
             width: 250px;
@@ -34,7 +34,7 @@
         }
         .content {
             padding: 15px;
-            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            margin-left: 250px;
             transition: margin-left 0.3s;
         }
         .content.sidebar-collapsed {
@@ -44,28 +44,163 @@
             height: 100%;
         }
         .container-fluid {
-            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+            min-height: calc(100vh - 120px);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .table th button, .table td button {
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+            color: inherit;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <!-- Include Header -->
     <div include-html="header.html"></div>
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Include Sidebar -->
             <div include-html="sidebar.html"></div>
 
-            <!-- Main Content -->
             <main id="main-content" class="col content">
-                <h2>Dashboard</h2>
-                <p>Project Summary</p>
+                <h1>Dashboard</h1>
+
+                <!-- Your Project Section -->
+                <section>
+                    <h2 class="section-title">Your Projects</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>Project Name <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>Project Start <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>Project End <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>Progress <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>Status <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>UPDATE DATE <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Project Alpha</td>
+                                <td>2023-01-01</td>
+                                <td>2023-12-31</td>
+                                <td>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;">40%</div>
+                                </td>
+                                <td><span class="badge bg-success">On Schedule</span></td>
+                                <td>2023-07-31</td>
+                                <td><a href="projectdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Project Beta</td>
+                                <td>2023-02-01</td>
+                                <td>2023-11-30</td>
+                                <td>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;">70%</div>
+                                </td>
+                                <td><span class="badge bg-warning">1 Week Delay</span></td>
+                                <td>2023-07-30</td>
+                                <td><a href="projectdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Your Tasks Section -->
+                <section>
+                    <h2 class="section-title">Your Tasks</h2>
+                    
+                    <!-- Task Info -->
+                    <div class="section-content">
+                        <table class="table table-bordered small-table">
+                            <thead>
+                                <tr>
+                                    <th>Issue Count</th>
+                                    <th>Unresolved Issues</th>
+                                    <th>Resolved Issues</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Task List -->
+                    <div class="section-content">
+                        <h3 class="section-title">Issue List</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Name <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Category <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Status <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Detected By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Assigned To <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Thumbnail <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Issue Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Expected Completion <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Update Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Crack on Wall</td>
+                                    <td>Crack</td>
+                                    <td>NEW</td>
+                                    <td>Inspector A (Ad)</td>
+                                    <td>Engineer B (PM)</td>
+                                    <td><img src="thumbnail1.jpg" alt="thumbnail" width="50"></td>
+                                    <td>2023-07-01</td>
+                                    <td>2023-07-15</td>
+                                    <td>2023-07-10</td>
+                                    <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Peeling Paint</td>
+                                    <td>Peeling</td>
+                                    <td>In Repair</td>
+                                    <td>Inspector B (SM)</td>
+                                    <td>Engineer C (OP)</td>
+                                    <td><img src="thumbnail2.jpg" alt="thumbnail" width="50"></td>
+                                    <td>2023-06-20</td>
+                                    <td>2023-07-05</td>
+                                    <td>2023-07-02</td>
+                                    <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </main>
         </div>
     </div>
 
-    <!-- Include Footer -->
     <div include-html="footer.html"></div>
 
     <script src="js/bootstrap.bundle.min.js"></script>

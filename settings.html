@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Settings</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+        }
+        .sidebar {
+            background-color: #0056b3;
+            color: white;
+            min-height: calc(100vh - 120px);
+            transition: width 0.3s;
+            position: fixed;
+            top: 70px;
+            bottom: 60px;
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px;
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .section-content {
+            margin-bottom: 20px;
+        }
+        .badge {
+            font-size: 0.875rem;
+        }
+        .btn-dummy {
+            margin-right: 5px;
+        }
+        .action-buttons {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .action-buttons .btn {
+            margin-left: 5px;
+        }
+        .nav-tabs {
+            margin-bottom: 20px;
+        }
+        .tab-content .tab-pane {
+            padding-top: 20px;
+        }
+        .permissions-table th, .permissions-table td {
+            font-size: 0.75rem;
+            padding: 0.25rem;
+            vertical-align: middle;
+        }
+        .permissions-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div include-html="sidebar.html"></div>
+
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                    </ol>
+                </nav>
+                <h2>Settings</h2>
+
+                <!-- Nav Tabs -->
+                <ul class="nav nav-tabs" id="settingsTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="project-tab" data-bs-toggle="tab" href="#project" role="tab" aria-controls="project" aria-selected="true">Project</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="user-tab" data-bs-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="false">User</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="issue-tab" data-bs-toggle="tab" href="#issue" role="tab" aria-controls="issue" aria-selected="false">Issue</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="facility-tab" data-bs-toggle="tab" href="#facility" role="tab" aria-controls="facility" aria-selected="false">Facility</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="settingsTabContent">
+                    <!-- Project Section -->
+                    <div class="tab-pane fade show active" id="project" role="tabpanel" aria-labelledby="project-tab">
+                        <div class="section-content">
+                            <h3 class="section-title">Project Status</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Status Name</th>
+                                        <th>On/Off</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>On Schedule</td>
+                                        <td><input type="checkbox" checked></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>1 Week Delay</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>2 Week Delay</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>3 Week Delay</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>4 Week Delay</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end mb-3">
+                                <button class="btn btn-primary">ADD STATUS</button>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Section -->
+                    <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+                        <div class="section-content">
+                            <h3 class="section-title">User Roles</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>User Role</th>
+                                        <th>On/Off</th>
+                                        <th>Permissions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>User</td>
+                                        <td><input type="checkbox" checked></td>
+                                        <td>
+                                            <table class="table table-bordered permissions-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Section</th>
+                                                        <th>Write</th>
+                                                        <th>Read</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Project Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Facility Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>User Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Site Manager (SM)</td>
+                                        <td><input type="checkbox"></td>
+                                        <td>
+                                            <table class="table table-bordered permissions-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Section</th>
+                                                        <th>Write</th>
+                                                        <th>Read</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Project Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Facility Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>User Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Out Vendor (OV)</td>
+                                        <td><input type="checkbox"></td>
+                                        <td>
+                                            <table class="table table-bordered permissions-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Section</th>
+                                                        <th>Write</th>
+                                                        <th>Read</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Project Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Facility Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>User Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Project Manager (PM)</td>
+                                        <td><input type="checkbox"></td>
+                                        <td>
+                                            <table class="table table-bordered permissions-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Section</th>
+                                                        <th>Write</th>
+                                                        <th>Read</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Project Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Facility Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>User Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Administrator (AD)</td>
+                                        <td><input type="checkbox"></td>
+                                        <td>
+                                            <table class="table table-bordered permissions-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Section</th>
+                                                        <th>Write</th>
+                                                        <th>Read</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Project Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Facility Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>User Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Manage</td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end mb-3">
+                                <button class="btn btn-primary">ADD ROLE</button>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Issue Section -->
+                    <div class="tab-pane fade" id="issue" role="tabpanel" aria-labelledby="issue-tab">
+                        <div class="section-content">
+                            <h3 class="section-title">Issue Status</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Status Name</th>
+                                        <th>On/Off</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>NEW</td>
+                                        <td><input type="checkbox" checked></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>IN REVIEW</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>FIXING</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>VERIFY</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>FIXED</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end mb-3">
+                                <button class="btn btn-primary">ADD STATUS</button>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                            <h3 class="section-title mt-5">Issue Category</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Category Name</th>
+                                        <th>On/Off</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Crack</td>
+                                        <td><input type="checkbox" checked></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Peeling</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Structure Defect</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Others</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end mb-3">
+                                <button class="btn btn-primary">ADD CATEGORY</button>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facility Section -->
+                    <div class="tab-pane fade" id="facility" role="tabpanel" aria-labelledby="facility-tab">
+                        <div class="section-content">
+                            <h3 class="section-title">Facility Category</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Category Name</th>
+                                        <th>On/Off</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Residential Building</td>
+                                        <td><input type="checkbox" checked></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Commercial Building</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Factory</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Office Building</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end mb-3">
+                                <button class="btn btn-primary">ADD CATEGORY</button>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

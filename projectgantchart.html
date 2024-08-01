@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Project Gantt Chart</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3;
+            color: white;
+            min-height: calc(100vh - 120px);
+            transition: width 0.3s;
+            position: fixed;
+            top: 70px;
+            bottom: 60px;
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px;
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .section-content {
+            margin-bottom: 20px;
+        }
+        .badge {
+            font-size: 0.875rem;
+        }
+        .gantt-chart {
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .gantt-row {
+            position: relative;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .gantt-label {
+            width: 150px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .gantt-bar, .gantt-scheduled-bar {
+            position: absolute;
+            height: 20px;
+            top: 0;
+        }
+        .gantt-bar {
+            color: white;
+            text-align: center;
+            line-height: 20px;
+        }
+        .gantt-scheduled-bar {
+            background-color: #28a745;
+            opacity: 0.5;
+        }
+        .gantt-index {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.875rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div include-html="sidebar.html"></div>
+
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project Manage</a></li>
+                        <li class="breadcrumb-item"><a href="projectreportlist.html">Project Report List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Project Gantt Chart</li>
+                    </ol>
+                </nav>
+                <h2 class="section-title">Project: Project Alpha</h2>
+
+                <!-- Progress Summary Section -->
+                <div class="section-content">
+                    <h3 class="section-title">Progress Summary</h3>
+                    <table class="table table-bordered small-table">
+                        <thead>
+                            <tr>
+                                <th>Project Start</th>
+                                <th>Project End</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023-07-01</td>
+                                <td>2023-09-30</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;">40%</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-success">On Schedule</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Issue Info Section -->
+                <div class="section-content">
+                    <h3 class="section-title">Issue Info</h3>
+                    <table class="table table-bordered small-table">
+                        <thead>
+                            <tr>
+                                <th>Issue Count</th>
+                                <th>Unresolved Issues</th>
+                                <th>Resolved Issues</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8</td>
+                                <td>2</td>
+                                <td>6</td>
+                                <td class="text-center">
+                                    <a href="issuelist.html" class="btn btn-primary">DETAIL</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Gantt Chart Section -->
+                <div class="section-content">
+                    <h3 class="section-title">Gantt Chart</h3>
+                    <div class="gantt-index">
+                        <span>7/1</span>
+                        <span>7/2</span>
+                        <span>7/3</span>
+                        <span>7/4</span>
+                        <span>7/5</span>
+                        <span>7/6</span>
+                        <span>7/7</span>
+                        <span>7/8</span>
+                        <span>7/9</span>
+                        <span>7/10</span>
+                        <span>7/11</span>
+                        <span>7/12</span>
+                        <span>7/13</span>
+                        <span>7/14</span>
+                        <span>7/15</span>
+                        <span>7/16</span>
+                        <span>7/17</span>
+                        <span>7/18</span>
+                        <span>7/19</span>
+                        <span>7/20</span>
+                        <span>7/21</span>
+                        <span>7/22</span>
+                        <span>7/23</span>
+                        <span>7/24</span>
+                        <span>7/25</span>
+                        <span>7/26</span>
+                        <span>7/27</span>
+                        <span>7/28</span>
+                        <span>7/29</span>
+                        <span>7/30</span>
+                        <span>7/31</span>
+                    </div>
+                    <div class="gantt-chart">
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 1</div>
+                            <div class="gantt-bar" style="left: 0%; width: 10%; background-color: red;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 0%; width: 30%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 2</div>
+                            <div class="gantt-bar" style="left: 10%; width: 20%; background-color: yellow;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 10%; width: 30%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 3</div>
+                            <div class="gantt-bar" style="left: 20%; width: 30%; background-color: blue;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 20%; width: 35%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 4</div>
+                            <div class="gantt-bar" style="left: 30%; width: 10%; background-color: green;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 30%; width: 15%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 5</div>
+                            <div class="gantt-bar" style="left: 40%; width: 25%; background-color: red;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 40%; width: 30%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 6</div>
+                            <div class="gantt-bar" style="left: 50%; width: 20%; background-color: yellow;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 50%; width: 25%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 7</div>
+                            <div class="gantt-bar" style="left: 60%; width: 15%; background-color: blue;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 60%; width: 20%;"></div>
+                        </div>
+                        <div class="gantt-row">
+                            <div class="gantt-label">Issue 8</div>
+                            <div class="gantt-bar" style="left: 70%; width: 10%; background-color: green;">40%</div>
+                            <div class="gantt-scheduled-bar" style="left: 70%; width: 15%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='projectreportlist.html'">BACK</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

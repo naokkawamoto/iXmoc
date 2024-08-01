@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXmoc - Project Report Update</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3;
+            color: white;
+            min-height: calc(100vh - 120px);
+            transition: width 0.3s;
+            position: fixed;
+            top: 70px;
+            bottom: 60px;
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px;
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .viewer {
+            background-color: #ccc;
+            width: calc(100% - 260px);
+            height: 500px;
+            margin-left: 60px;
+            position: relative;
+        }
+        .viewer img {
+            width: 100%;
+            height: 100%;
+        }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: green;
+        }
+        .overlay-text .main-text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .overlay-text .sub-text {
+            font-size: 1rem;
+            color: black;
+        }
+        .compare-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div include-html="sidebar.html"></div>
+
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="projectmanage.html">Project Manage</a></li>
+                        <li class="breadcrumb-item"><a href="projectreportlist.html">Project Report List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Project Report Update</li>
+                    </ol>
+                </nav>
+                <h2 class="section-title">Project: Project Alpha / Facility: Facility One / Report Issued Date: 2023-07-01</h2>
+                
+                <div class="viewer">
+                    <img src="images/3dviewer.png" alt="3D Viewer">
+                    <div class="overlay-text">
+                        <div class="main-text">EDITABLE</div>
+                        <div class="sub-text">User can edit this 3D view</div>
+                    </div>
+                    <button class="btn btn-primary compare-button" onclick="window.location.href='projectreport3dcompare.html'">COMPARE</button>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='projectreportdetail.html'">BACK</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">UPDATE</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div include-html="footer.html"></div>
+
+    <!-- Update Confirmation Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Update Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to update this facility?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='projectreportdetail.html'">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                var viewer = document.querySelector('.viewer');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                    viewer.style.marginLeft = '10px';
+                    viewer.style.width = 'calc(100% - 10px)';
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                    viewer.style.marginLeft = '60px';
+                    viewer.style.width = 'calc(100% - 60px)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

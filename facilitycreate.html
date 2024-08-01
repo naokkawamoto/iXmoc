@@ -89,12 +89,15 @@
                         <div class="mb-3">
                             <label for="location1" class="form-label">Location 1</label>
                             <input type="text" class="form-control" id="location1" placeholder="Enter location">
+                            <label for="location1BIM" class="form-label mt-2">Upload BIM Model</label>
+                            <input type="file" class="form-control" id="location1BIM">
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
                         <button type="button" class="btn btn-secondary" id="addLocationBtn">ADD LOCATION</button>
                     </div>
                     <div class="text-center">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='facilitymanage.html'">CANCEL</button>
                         <button type="submit" class="btn btn-primary btn-lg">CREATE</button>
                     </div>
                 </form>
@@ -130,7 +133,9 @@
                 var newLocationDiv = document.createElement('div');
                 newLocationDiv.className = 'mb-3';
                 newLocationDiv.innerHTML = '<label for="location' + locationCounter + '" class="form-label">Location ' + locationCounter + '</label>' +
-                                        '<input type="text" class="form-control" id="location' + locationCounter + '" placeholder="Enter location">';
+                                        '<input type="text" class="form-control" id="location' + locationCounter + '" placeholder="Enter location">' +
+                                        '<label for="location' + locationCounter + 'BIM" class="form-label mt-2">Upload BIM Model</label>' +
+                                        '<input type="file" class="form-control" id="location' + locationCounter + 'BIM">';
                 document.getElementById('locations').appendChild(newLocationDiv);
             });
         });
