@@ -73,7 +73,7 @@
                     </ol>
                 </nav>
                 <h2>Create Project</h2>
-                <!-- ここにプロジェクト作成フォームを追加 -->
+                <!-- Project Creation Form -->
                 <form>
                     <div class="mb-3">
                         <label for="projectName" class="form-label">Name</label>
@@ -88,21 +88,36 @@
                         <input type="date" class="form-control" id="projectEnd">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">担当者</label>
+                        <label class="form-label">Assignee</label>
                         <div class="d-flex flex-wrap">
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="checkbox" id="user1" value="User1">
-                                <label class="form-check-label" for="user1">User1 (Ad)</label>
+                                <input class="form-check-input" type="checkbox" id="user1" value="John Doe">
+                                <label class="form-check-label" for="user1">John Doe (PO)</label>
                             </div>
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="checkbox" id="user2" value="User2">
-                                <label class="form-check-label" for="user2">User2 (PM)</label>
+                                <input class="form-check-input" type="checkbox" id="user2" value="Jane Smith">
+                                <label class="form-check-label" for="user2">Jane Smith (PD)</label>
                             </div>
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="checkbox" id="user3" value="User3">
-                                <label class="form-check-label" for="user3">User3 (SM)</label>
+                                <input class="form-check-input" type="checkbox" id="user3" value="Michael Brown">
+                                <label class="form-check-label" for="user3">Michael Brown (PM)</label>
                             </div>
-                            <!-- 他のユーザーも同様に追加 -->
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user4" value="Emily Davis">
+                                <label class="form-check-label" for="user4">Emily Davis (SM)</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user5" value="Chris Wilson">
+                                <label class="form-check-label" for="user5">Chris Wilson (SE)</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user6" value="Amanda Miller">
+                                <label class="form-check-label" for="user6">Amanda Miller (SC)</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" id="user7" value="David Martinez">
+                                <label class="form-check-label" for="user7">David Martinez (AD)</label>
+                            </div>
                             <button type="button" class="btn btn-primary btn-create">CREATE USER</button>
                         </div>
                     </div>
@@ -111,9 +126,13 @@
                         <div class="d-flex">
                             <select class="form-select" id="facilitySelect">
                                 <option selected>Choose facility...</option>
-                                <option value="1">Facility A</option>
-                                <option value="2">Facility B</option>
-                                <!-- 他の施設も同様に追加 -->
+                                <option value="TOKYO">Facility TOKYO</option>
+                                <option value="OSAKA">Facility OSAKA</option>
+                                <option value="KYOTO">Facility KYOTO</option>
+                                <option value="NAGOYA">Facility NAGOYA</option>
+                                <option value="SAPPORO">Facility SAPPORO</option>
+                                <option value="HIROSHIMA">Facility HIROSHIMA</option>
+                                <option value="FUKUOKA">Facility FUKUOKA</option>
                             </select>
                             <button type="button" class="btn btn-primary btn-create">CREATE FACILITY</button>
                         </div>

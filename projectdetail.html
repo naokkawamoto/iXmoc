@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iXmoc - Project Detail</title>
+    <title>ProjectName Dashboard</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -58,11 +58,9 @@
         .small-table th {
             background-color: #f2f2f2;
         }
-        .section-content {
-            margin-bottom: 20px;
-        }
-        .badge {
-            font-size: 0.875rem;
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -81,116 +79,379 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="projectmanage.html">Project List</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Project Detail</li>
+                        <li class="breadcrumb-item active" aria-current="page">ProjectName Dashboard</li>
                     </ol>
                 </nav>
-                <h2>Project Detail</h2>
+                <h2>Project: Project Facility TOKYO</h2>
 
-                <!-- Project Info Section -->
-                <div class="section-content">
-                    <h3 class="section-title">Project Info</h3>
-                    <table class="table table-bordered small-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>担当者</th>
-                                <th>Facility</th>
-                                <th>UPDATE DATE</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Project Alpha</td>
-                                <td>User1 (Ad), User2 (PM)</td>
-                                <td>Facility A</td>
-                                <td>2023-07-31</td>
-                                <td class="text-center">
-                                    <button class="btn btn-warning">EDIT</button>
-                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">DELETE</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Bootstrap Tabs -->
+                <ul class="nav nav-tabs" id="projectTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="issues-tab" data-bs-toggle="tab" href="#issues" role="tab" aria-controls="issues" aria-selected="false">ISSUES LIST</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="reports-tab" data-bs-toggle="tab" href="#reports" role="tab" aria-controls="reports" aria-selected="false">REPORTS LIST</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="gantchart-tab" data-bs-toggle="tab" href="#gantchart" role="tab" aria-controls="gantchart" aria-selected="false">GANTCHART</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="info-tab" data-bs-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">INFO</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="projectTabContent">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                        <!-- Project Dashboard Section -->
+                        <div class="section-content">
+                            <h3 class="section-title">Progress</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Project Name</th>
+                                        <th>Project Start</th>
+                                        <th>Project End</th>
+                                        <th>Progress</th>
+                                        <th>Status</th>
+                                        <th>UPDATE DATE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Project Facility TOKYO</td>
+                                        <td>2023-01-01</td>
+                                        <td>2023-12-31</td>
+                                        <td>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 40%;">40%</div>
+                                        </td>
+                                        <td><span class="badge bg-success">On Schedule</span></td>
+                                        <td>2023-07-31</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="section-content">
+                            <h3 class="section-title">Issues Info</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Detected By</th>
+                                        <th>Assigned To</th>
+                                        <th>Issue Date</th>
+                                        <th>Update Date</th>
+                                        <th>Expected Completion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Crack on Wall</td>
+                                        <td>Crack</td>
+                                        <td>NEW</td>
+                                        <td>Inspector A (Ad)</td>
+                                        <td>Engineer B (PM)</td>
+                                        <td>2023-07-01</td>
+                                        <td>2023-07-10</td>
+                                        <td>2023-07-15</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="section-content">
+                            <h3 class="section-title">Project Reports</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Report Name</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Initial Inspection</td>
+                                        <td>2023-07-01</td>
+                                        <td>Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Mid-Project Review</td>
+                                        <td>2023-08-01</td>
+                                        <td>Pending</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="issues" role="tabpanel" aria-labelledby="issues-tab">
+                        <div class="section-content">
+                            <h3 class="section-title">Issues Info</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>Issue Count</th>
+                                        <th>Unresolved Issues</th>
+                                        <th>Resolved Issues</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>5</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="issuecreate.html" class="btn btn-success">NEW CREATE</a>
+                        </div>
+                        <h2>Issues List</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Name <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Category <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Status <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Detected By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Assigned To <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Thumbnail <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Issue Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Expected Completion <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Update Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- サンプルデータ。必要に応じて動的に生成してください。 -->
+                                <tr>
+                                    <td>1</td>
+                                    <td>Crack on Wall</td>
+                                    <td>Crack</td>
+                                    <td>NEW</td>
+                                    <td>John Doe (PO)</td>
+                                    <td>Michael Brown (PM)</td>
+                                    <td><img src="thumbnail1.jpg" alt="thumbnail" width="50"></td>
+                                    <td>2023-07-01</td>
+                                    <td>2023-07-15</td>
+                                    <td>2023-07-10</td>
+                                    <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Peeling Paint</td>
+                                    <td>Peeling</td>
+                                    <td>In Repair</td>
+                                    <td>Jane Smith (PD)</td>
+                                    <td>Chris Wilson (SE)</td>
+                                    <td><img src="thumbnail2.jpg" alt="thumbnail" width="50"></td>
+                                    <td>2023-06-20</td>
+                                    <td>2023-07-05</td>
+                                    <td>2023-07-02</td>
+                                    <td><a href="issuedetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ページネーションの例 -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="reports" role="tabpanel" aria-labelledby="reports-tab">
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="projectreportcreate.html" class="btn btn-success" style="margin-bottom: 3px;">NEW CREATE</a>
+                        </div>
+                        <div class="section-content">
+                            <h3 class="section-title">Reports</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>Thumbnail</th>
+                                        <th>Issue Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>Issued By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>Update Date <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>Updated By <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><img src="thumbnail1.jpg" alt="Thumbnail" style="width: 50px; height: 50px;"></td>
+                                        <td>2023-07-01</td>
+                                        <td>John Doe (PO)</td>
+                                        <td>2023-07-10</td>
+                                        <td>Jane Smith (PD)</td>
+                                        <td><a href="projectreportdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><img src="thumbnail2.jpg" alt="Thumbnail" style="width: 50px; height: 50px;"></td>
+                                        <td>2023-07-02</td>
+                                        <td>Emily Davis (SM)</td>
+                                        <td>2023-07-11</td>
+                                        <td>Michael Brown (PM)</td>
+                                        <td><a href="projectreportdetail.html" class="btn btn-primary btn-sm">DETAIL</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="gantchart" role="tabpanel" aria-labelledby="gantchart-tab">
+                        <!-- Gantt Chart Section -->
+                        <div class="section-content" id="gantchartsection">
+                            <h3 class="section-title">Gantt Chart</h3>
+                            <div class="gantt-index">
+                                <span>7/1</span>
+                                <span>7/2</span>
+                                <span>7/3</span>
+                                <span>7/4</span>
+                                <span>7/5</span>
+                                <span>7/6</span>
+                                <span>7/7</span>
+                                <span>7/8</span>
+                                <span>7/9</span>
+                                <span>7/10</span>
+                                <span>7/11</span>
+                                <span>7/12</span>
+                                <span>7/13</span>
+                                <span>7/14</span>
+                                <span>7/15</span>
+                                <span>7/16</span>
+                                <span>7/17</span>
+                                <span>7/18</span>
+                                <span>7/19</span>
+                                <span>7/20</span>
+                                <span>7/21</span>
+                                <span>7/22</span>
+                                <span>7/23</span>
+                                <span>7/24</span>
+                                <span>7/25</span>
+                                <span>7/26</span>
+                                <span>7/27</span>
+                                <span>7/28</span>
+                                <span>7/29</span>
+                                <span>7/30</span>
+                                <span>7/31</span>
+                            </div>
+                            <div class="gantt-chart">
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 1</div>
+                                    <div class="gantt-bar" style="left: 0%; width: 10%; background-color: red;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 0%; width: 30%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 2</div>
+                                    <div class="gantt-bar" style="left: 10%; width: 20%; background-color: yellow;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 10%; width: 30%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 3</div>
+                                    <div class="gantt-bar" style="left: 20%; width: 30%; background-color: blue;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 20%; width: 35%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 4</div>
+                                    <div class="gantt-bar" style="left: 30%; width: 10%; background-color: green;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 30%; width: 15%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 5</div>
+                                    <div class="gantt-bar" style="left: 40%; width: 25%; background-color: red;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 40%; width: 30%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 6</div>
+                                    <div class="gantt-bar" style="left: 50%; width: 20%; background-color: yellow;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 50%; width: 25%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 7</div>
+                                    <div class="gantt-bar" style="left: 60%; width: 15%; background-color: blue;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 60%; width: 20%;"></div>
+                                </div>
+                                <div class="gantt-row">
+                                    <div class="gantt-label">Issue 8</div>
+                                    <div class="gantt-bar" style="left: 70%; width: 10%; background-color: green;">40%</div>
+                                    <div class="gantt-scheduled-bar" style="left: 70%; width: 15%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                        <!-- Project Info Section -->
+                        <div class="section-content">
+                            <h3 class="section-title">Project Info</h3>
+                            <table class="table table-bordered small-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Detected By</th>
+                                        <th>Assigned To</th>
+                                        <th>Photos</th>
+                                        <th>Issue Date</th>
+                                        <th>Update Date</th>
+                                        <th>Expected Completion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Crack on Wall</td>
+                                        <td>Crack</td>
+                                        <td>NEW</td>
+                                        <td>Inspector A (Ad)</td>
+                                        <td>Engineer B (PM)</td>
+                                        <td>
+                                            <a href="projectreportdetail.html" class="btn btn-primary btn-sm">3D View</a>
+                                        </td>
+                                        <td>2023-07-01</td>
+                                        <td>2023-07-10</td>
+                                        <td>2023-07-15</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Issue Section -->
-                <div class="section-content">
-                    <h3 class="section-title">Issue Info</h3>
-                    <table class="table table-bordered small-table">
-                        <thead>
-                            <tr>
-                                <th>Issue Count</th>
-                                <th>Unresolved Issues</th>
-                                <th>Resolved Issues</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td class="text-center">
-                                    <a href="issuelist.html" class="btn btn-primary">Issue List</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Project Report Section -->
-                <div class="section-content">
-                    <h3 class="section-title">Project Report</h3>
-                    <table class="table table-bordered small-table">
-                        <thead>
-                            <tr>
-                                <th>Project Report Count</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>3</td>
-                                <td class="text-center">
-                                    <a href="projectreportlist.html" class="btn btn-primary">Project Report List</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Progress Section -->
-                <div class="section-content">
-                    <h3 class="section-title">Progress</h3>
-                    <table class="table table-bordered small-table">
-                        <thead>
-                            <tr>
-                                <th>Project Start</th>
-                                <th>Project End</th>
-                                <th>Progress</th>
-                                <th>Status</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2023-01-01</td>
-                                <td>2023-12-31</td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;">40%</div>
-                                    </div>
-                                </td>
-                                <td><span class="badge bg-success">On Schedule</span></td>
-                                <td class="text-center">
-                                    <a href="projectgantchart.html" class="btn btn-primary">Project Gantt Chart</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Action Buttons -->
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='projectmanage.html'">BACK</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='projectupdate.html'">UPDATE</button>
                 </div>
             </main>
         </div>
@@ -198,25 +459,6 @@
 
     <!-- Include Footer -->
     <div include-html="footer.html"></div>
-
-    <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this project?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
-                    <button type="button" class="btn btn-danger">YES</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/includeHTML.js"></script>
