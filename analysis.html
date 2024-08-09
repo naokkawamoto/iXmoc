@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Dashboard</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .header, .footer {
+            background-color: #007bff; /* Bootstrapのプライマリカラー */
+            color: white;
+            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #0056b3; /* より濃い青色 */
+            color: white;
+            min-height: calc(100vh - 120px); /* サイドバーの高さを画面全体に */
+            transition: width 0.3s;
+            position: fixed; /* サイドバーを固定 */
+            top: 70px; /* ヘッダーの高さ + 10px */
+            bottom: 60px; /* フッターの高さ */
+        }
+        .sidebar-expanded {
+            width: 250px;
+        }
+        .sidebar-collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            padding: 15px;
+            margin-left: 250px; /* サイドバーの幅と同じ値 */
+            transition: margin-left 0.3s;
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        body, html {
+            height: 100%;
+        }
+        .container-fluid {
+            min-height: calc(100vh - 120px); /* ヘッダーとフッターの高さを除外 */
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .small-table th, .small-table td {
+            font-size: 0.875rem;
+            padding: 0.25rem;
+        }
+        .small-table th {
+            background-color: #f2f2f2;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div include-html="header.html"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Include Sidebar -->
+            <div include-html="sidebar.html"></div>
+
+            <!-- Main Content -->
+            <main id="main-content" class="col content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Analysis</li>
+                    </ol>
+                </nav>
+                <h2>Analysis Dashboard</h2>
+
+                <!-- Bootstrap Tabs -->
+                <ul class="nav nav-tabs" id="analysisTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="effect-tab" data-bs-toggle="tab" href="#effect" role="tab" aria-controls="effect" aria-selected="true">Effect</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="classification-tab" data-bs-toggle="tab" href="#classification" role="tab" aria-controls="classification" aria-selected="false">Classification</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="analysisTabContent">
+                    <div class="tab-pane fade show active" id="effect" role="tabpanel" aria-labelledby="effect-tab">
+                        <!-- Effect Section -->
+                        <div class="section-content">
+                            <h3 class="section-title">Effect Analysis</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>PROJECT NAME <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>PROJECT DURATION (DAYS) <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>NUM ISSUES <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>AVG REPAIR DURATION <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>TOTAL REPAIR DURATION (DAYS) <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>ISSUE RATE <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>REPAIR RATE <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ダミーデータ -->
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Project Facility TOKYO</td>
+                                        <td>365</td>
+                                        <td>22</td>
+                                        <td>15</td>
+                                        <td>330</td>
+                                        <td>0.06</td>
+                                        <td>0.90</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Project Facility OSAKA</td>
+                                        <td>300</td>
+                                        <td>30</td>
+                                        <td>10</td>
+                                        <td>300</td>
+                                        <td>0.10</td>
+                                        <td>1.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Project Facility KYOTO</td>
+                                        <td>275</td>
+                                        <td>20</td>
+                                        <td>12</td>
+                                        <td>240</td>
+                                        <td>0.07</td>
+                                        <td>0.87</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Project Facility NAGOYA</td>
+                                        <td>240</td>
+                                        <td>25</td>
+                                        <td>14</td>
+                                        <td>350</td>
+                                        <td>0.10</td>
+                                        <td>1.46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Project Facility SAPPORO</td>
+                                        <td>180</td>
+                                        <td>15</td>
+                                        <td>8</td>
+                                        <td>120</td>
+                                        <td>0.08</td>
+                                        <td>0.67</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Project Facility HIROSHIMA</td>
+                                        <td>120</td>
+                                        <td>10</td>
+                                        <td>7</td>
+                                        <td>70</td>
+                                        <td>0.08</td>
+                                        <td>0.58</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Project Facility FUKUOKA</td>
+                                        <td>60</td>
+                                        <td>5</td>
+                                        <td>5</td>
+                                        <td>25</td>
+                                        <td>0.08</td>
+                                        <td>0.42</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- ページネーション -->
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="classification" role="tabpanel" aria-labelledby="classification-tab">
+                        <!-- Classification Section -->
+                        <div class="section-content">
+                            <h3 class="section-title">Classification Analysis</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>PROJECT NAME <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>TOTAL <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>CRACK <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>PEELING <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>STRUCTURE DEFECT <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                        <th>OTHERS <button class="btn btn-sm btn-link">▲</button><button class="btn btn-sm btn-link">▼</button></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ダミーデータ -->
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Project Facility TOKYO</td>
+                                        <td>22</td>
+                                        <td>10</td>
+                                        <td>5</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Project Facility OSAKA</td>
+                                        <td>30</td>
+                                        <td>12</td>
+                                        <td>8</td>
+                                        <td>6</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Project Facility KYOTO</td>
+                                        <td>20</td>
+                                        <td>9</td>
+                                        <td>5</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Project Facility NAGOYA</td>
+                                        <td>25</td>
+                                        <td>10</td>
+                                        <td>6</td>
+                                        <td>5</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Project Facility SAPPORO</td>
+                                        <td>15</td>
+                                        <td>6</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Project Facility HIROSHIMA</td>
+                                        <td>10</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Project Facility FUKUOKA</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- ページネーション -->
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">BACK</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div include-html="footer.html"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <script>
+        includeHTML();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                var mainContent = document.getElementById('main-content');
+                if (sidebar.classList.contains('sidebar-expanded')) {
+                    sidebar.classList.remove('sidebar-expanded');
+                    sidebar.classList.add('sidebar-collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.classList.add('sidebar-expanded');
+                    mainContent.classList.remove('sidebar-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
